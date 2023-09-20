@@ -28,9 +28,9 @@ namespace GameRater
         public static int MaximumRank { get; private set; }
 
         /// <summary>
-        /// List of <see cref="Rank"/>s within the scale.
+        /// List of default <see cref="Rank"/>s within the ranking scale.
         /// </summary>
-        public static List<Rank> Ranks { get; private set; }
+        public static List<Rank> DefaultRanks { get; private set; }
 
         /* Constructor */
         static RankingSystem()
@@ -38,7 +38,7 @@ namespace GameRater
             MinimumRank = 1;
             MaximumRank = 10;
 
-            Ranks = new List<Rank>
+            DefaultRanks = new List<Rank>
             {
                 new Rank(10, "Phenominal", "Perfect or near perfect."),
                 new Rank(9, "Exceptional", "Almost no negatives and a lot of positives."),

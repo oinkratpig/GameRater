@@ -59,16 +59,6 @@ namespace GameRater
             numericUpDownRanking.Maximum = RankingSystem.MaximumRank;
             textBoxGameName.Text = _game.Name;
 
-            // Rankings
-            listViewRankings.Clear();
-            //ColumnHeader column = listViewRankings.Columns.Add("test", 0, HorizontalAlignment.Left);
-            int i = 0;
-            foreach (Rank rank in RankingSystem.Ranks)
-            {
-                ListViewItem lvItem = listViewRankings.Items.Add($"{RankingSystem.MaximumRank - i++}. {{{rank.Name}}} {rank.Description}");
-                lvItem.BackColor = RankingSystem.ColorFromPercent(1 - (float)(i - 1) / RankingSystem.MaximumRank);
-            }
-
             // Set first question
             SetQuestion(0);
 
@@ -93,7 +83,27 @@ namespace GameRater
 
             checkBoxRelevant.Checked = _currentQuestion.Relevant;
 
+            SetRankings();
+
         } // end SetQuestion
+
+        /// <summary>
+        /// Update the rankings list.
+        /// </summary>
+        private void SetRankings()
+        {
+            listViewRankings.Clear();
+            if (_currentQuestion != null)
+            {
+                int i = 0;
+                foreach (Rank rank in _currentQuestion.Ranks)
+                {
+                    ListViewItem lvItem = listViewRankings.Items.Add($"{RankingSystem.MaximumRank - i++}. {{{rank.Name}}} {rank.Description}");
+                    lvItem.BackColor = RankingSystem.ColorFromPercent(1 - (float)(i - 1) / RankingSystem.MaximumRank);
+                }
+            }
+
+        } // end SetRankings
 
         /* Ranking changed */
         private void numericUpDownRanking_ValueChanged(object sender, EventArgs e)

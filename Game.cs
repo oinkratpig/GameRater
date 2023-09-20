@@ -56,7 +56,7 @@ namespace GameRater
         /* Get default questions */
         public static List<Question> DefaultQuestions()
         {
-            return new List<Question>()
+            List<Question> questions = new List<Question>()
             {
                 new Question(3f,    "General opinion of the game?"),
                 new Question(2f,    "Gameplay?"),
@@ -70,6 +70,39 @@ namespace GameRater
                 new Question(1f,    "Level design?"),
                 new Question(1f,    "Atmosphere?"),
             };
+
+            // Replability
+            questions[3].Ranks = new List<Rank>()
+            {
+                new Rank(10, "Phenominal", "Could play occassionally forever."),
+                new Rank(9, "Exceptional", "Could play for years."),
+                new Rank(8, "Great", "Could play for months."),
+                new Rank(7, "Good", "Could play a lot."),
+                new Rank(6, "Okay", "Could play more than most games."),
+                new Rank(5, "Average", "Nothing special."),
+                new Rank(4, "Flawed", "Stale after a while."),
+                new Rank(3, "Boring", "Stale really quick."),
+                new Rank(2, "Snoozefest", "Stale almost immediately."),
+                new Rank(1, "Abysmal", "Immediately stale."),
+            };
+
+            // Impact
+            questions[4].Ranks = new List<Rank>()
+            {
+                new Rank(10, "Life-Changing", "Indescribable effect on me."),
+                new Rank(9, "Obsession", "Shaped my interests substantially."),
+                new Rank(8, "Inspiring", "Inspired me."),
+                new Rank(7, "Yearning", "I want to experience it again for the first time."),
+                new Rank(6, "Fond Memory", "I look back to playing pleasantly."),
+                new Rank(5, "Average", "Didn't really affect me."),
+                new Rank(4, "Bad Memory", "I look back to playing unpleasantly."),
+                new Rank(3, "Never Again", "Glad I'm not playing it anymore."),
+                new Rank(2, "Hate", "Very negative affect on me."),
+                new Rank(1, "Addiction", "Made my life miserable."),
+            };
+
+            // Return
+            return questions;
 
         } // end DefaultQuestions
 

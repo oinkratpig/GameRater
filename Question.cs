@@ -18,6 +18,11 @@ namespace GameRater
         public string Description { get; private set; }
 
         /// <summary>
+        /// List of ranks the user can choose to rank the game.
+        /// </summary>
+        public List<Rank> Ranks { get; set; }
+
+        /// <summary>
         /// The <see cref="GameRater.Rank"/> based on the numerical <see href="Ranking"/> property.
         /// </summary>
         public Rank? Rank { get; private set; }
@@ -30,7 +35,7 @@ namespace GameRater
             get { return _rank; }
             set
             {
-                foreach (Rank rank in RankingSystem.Ranks)
+                foreach (Rank rank in Ranks)
                     if (rank.Value == value)
                     {
                         Rank = rank;
@@ -59,6 +64,9 @@ namespace GameRater
             Weight = weight;
             Description = description;
             Relevant = true;
+
+            // Defaults Ranks
+            Ranks = RankingSystem.DefaultRanks;
 
             // Default ranking (average)
             Ranking = (int)(RankingSystem.MinimumRank + (RankingSystem.MaximumRank - RankingSystem.MinimumRank) / 2f);
