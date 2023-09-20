@@ -10,9 +10,8 @@ namespace GameRater
     {
         public static readonly string? PATH_RELATIVE = Path.GetDirectoryName(Application.ExecutablePath) + @"\";
         public static readonly string PATH_EXPORT = PATH_RELATIVE + "export.txt";
-        public static readonly string PATH_GAMES = PATH_RELATIVE + "games.json";
+        public static readonly string PATH_GAMES = PATH_RELATIVE + "games.oink";
 
-        /*
         /// <summary>
         /// Encode a string as Base64.
         /// </summary>
@@ -32,7 +31,6 @@ namespace GameRater
             return Encoding.UTF8.GetString(bytes);
 
         } // end Base64Decode
-        */
 
     } // end class GameRater
 

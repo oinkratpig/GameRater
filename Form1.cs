@@ -33,7 +33,7 @@ namespace GameRater
                 if(data != string.Empty)
                 {
                     //List<Game>? games = JsonSerializer.Deserialize<List<Game>>(data);
-                    List<Game>? games = JsonConvert.DeserializeObject<List<Game>>(data);
+                    List<Game>? games = JsonConvert.DeserializeObject<List<Game>>(GameRater.Base64Decode(data));
                     if (games != null)
                         Games = games;
                 }
@@ -137,7 +137,7 @@ namespace GameRater
             // Update games file
             //string json = JsonSerializer.Serialize(Games);
             string json = JsonConvert.SerializeObject(Games);
-            File.WriteAllText(GameRater.PATH_GAMES, json);
+            File.WriteAllText(GameRater.PATH_GAMES, GameRater.Base64Encode(json));
 
         } // end SaveGames
 
